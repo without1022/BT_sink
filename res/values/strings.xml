@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MeigBT</string>
+    <string name="next">next</string>
+    <string name="start">start</string>
+    <string name="back">back</string>
+	<string name="pbap_account_type">com.android.bluetooth.pbapsink</string>
+	<string name="phonebookstatus">phoneBookStatus</string>
+    <string name="closepb">closepb</string>
+    <string name="callPhone">callPhone</string>
+    <string name="readStatus">readStatus</string>
+	<string name="a2dpStatus">a2dp_sink status</string>
+    <string name="hfpclientstatus">hfpclient status</string>
+</resources>

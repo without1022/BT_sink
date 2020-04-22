@@ -1,0 +1,54 @@
+diff --git a/packages/apps/Bluetooth/res/values/config.xml b/packages/apps/Bluetooth/res/values/config.xml
+index 90e513d..bfbf7e1 100644
+--- a/packages/apps/Bluetooth/res/values/config.xml
++++ b/packages/apps/Bluetooth/res/values/config.xml
+@@ -13,11 +13,11 @@
+    limitations under the License.
+ -->
+ <resources>
+-    <bool name="profile_supported_a2dp">true</bool>
+-    <bool name="profile_supported_a2dp_sink">false</bool>
++    <bool name="profile_supported_a2dp">false</bool>
++    <bool name="profile_supported_a2dp_sink">true</bool>
+     <bool name="profile_supported_hdp">true</bool>
+-    <bool name="profile_supported_hs_hfp">true</bool>
+-    <bool name="profile_supported_hfpclient">false</bool>
++    <bool name="profile_supported_hs_hfp">false</bool>
++    <bool name="profile_supported_hfpclient">true</bool>
+     <bool name="profile_supported_hid">true</bool>
+     <bool name="profile_supported_opp">true</bool>
+     <bool name="profile_supported_pan">true</bool>
+@@ -26,7 +26,7 @@
+     <bool name="pbap_include_photos_in_vcard">true</bool>
+     <bool name="pbap_use_profile_for_owner_vcard">true</bool>
+     <bool name="profile_supported_map">true</bool>
+-    <bool name="profile_supported_avrcp_controller">false</bool>
++    <bool name="profile_supported_avrcp_controller">true</bool>
+     <bool name="profile_supported_sap">false</bool>
+     <bool name="profile_supported_pbapclient">false</bool>
+ 
+@@ -65,7 +65,7 @@
+     <integer name="a2dp_sink_duck_percent">25</integer>
+ 
+     <!-- For enabling the hfp client connection service -->
+-    <bool name="hfp_client_connection_service_enabled">false</bool>
++    <bool name="hfp_client_connection_service_enabled">true</bool>
+ 
+     <!-- For disabling non AOSP bluetooth features -->
+     <bool name="disable_non_aosp_bt_features">false</bool>
+diff --git a/packages/apps/Bluetooth/src/com/android/bluetooth/btservice/Config.java b/packages/apps/Bluetooth/src/com/android/bluetooth/btservice/Config.java
+index 3254feb..a4ca73c 100644
+--- a/packages/apps/Bluetooth/src/com/android/bluetooth/btservice/Config.java
++++ b/packages/apps/Bluetooth/src/com/android/bluetooth/btservice/Config.java
+@@ -112,9 +112,9 @@ public class Config {
+     @SuppressWarnings("rawtypes")
+     private static synchronized boolean addAudioProfiles(String serviceName) {
+         boolean isA2dpSinkEnabled = SystemProperties.getBoolean("persist.service.bt.a2dp.sink",
+-                                                                                         false);
++                                                                                         true);
+         boolean isHfpClientEnabled = SystemProperties.getBoolean("persist.service.bt.hfp.client",
+-                                                                                         false);
++                                                                                         true);
+         Log.d(TAG, "addA2dpProfile: isA2dpSinkEnabled = " + isA2dpSinkEnabled+"isHfpClientEnabled "
+         + isHfpClientEnabled + " serviceName " + serviceName);
+         /* If property not enabled and request is for A2DPSinkService, don't add */
